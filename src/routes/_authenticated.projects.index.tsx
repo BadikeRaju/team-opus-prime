@@ -25,7 +25,7 @@ import type { Priority, Project } from "@/lib/epms-types";
 import { completion, formatDate, initials } from "@/lib/epms-utils";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/_authenticated/projects")({
+export const Route = createFileRoute("/_authenticated/projects/")({
   head: () => ({
     meta: [
       { title: "Projects — EPMS" },
