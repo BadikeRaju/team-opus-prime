@@ -3,6 +3,7 @@ Django settings for core_project project.
 """
 
 import os
+import dj_database_url
 from datetime import timedelta
 from pathlib import Path
 
@@ -79,16 +80,25 @@ WSGI_APPLICATION = "core_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME", "team_opus_prime"),
-        "USER": os.environ.get("DB_USER", "db_user"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "db_password"),
-        "HOST": os.environ.get("DB_HOST", "127.0.0.1"),
-        "PORT": os.environ.get("DB_PORT", "3306"),
+if os.environ.get("DATABASE_URL"):
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ.get("DATABASE_URL"),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("DB_NAME", "team_opus_prime"),
+            "USER": os.environ.get("DB_USER", "db_user"),
+            "PASSWORD": os.environ.get("DB_PASSWORD", "db_password"),
+            "HOST": os.environ.get("DB_HOST", "127.0.0.1"),
+            "PORT": os.environ.get("DB_PORT", "3306"),
+        }
+    }
 
 
 # Password validation
