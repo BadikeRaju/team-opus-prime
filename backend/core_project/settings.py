@@ -81,12 +81,18 @@ WSGI_APPLICATION = "core_project.wsgi.application"
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 if os.environ.get("DATABASE_URL"):
+    db_config = dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+    # Fix for Aiven's "ssl-mode" which uses a hyphen, but mysqlclient expects an underscore
+    if "OPTIONS" in db_config and "ssl-mode" in db_config["OPTIONS"]:
+        ssl_mode = db_config["OPTIONS"].pop("ssl-mode")
+        db_config["OPTIONS"]["ssl_mode"] = ssl_mode
+        
     DATABASES = {
-        "default": dj_database_url.config(
-            default=os.environ.get("DATABASE_URL"),
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
+        "default": db_config
     }
 else:
     DATABASES = {
