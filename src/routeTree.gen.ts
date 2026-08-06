@@ -10,33 +10,229 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as AuthenticatedActivityRouteImport } from './routes/_authenticated.activity'
+import { Route as AuthenticatedBoardRouteImport } from './routes/_authenticated.board'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated.dashboard'
+import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated.employees'
+import { Route as AuthenticatedFilesRouteImport } from './routes/_authenticated.files'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated.notifications'
+import { Route as AuthenticatedOrganizationsRouteImport } from './routes/_authenticated.organizations'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated.profile'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated.reports'
+import { Route as AuthenticatedSearchRouteImport } from './routes/_authenticated.search'
+import { Route as AuthenticatedSprintsRouteImport } from './routes/_authenticated.sprints'
+import { Route as AuthenticatedTasksRouteImport } from './routes/_authenticated.tasks'
+import { Route as AuthenticatedTimesheetRouteImport } from './routes/_authenticated.timesheet'
+import { Route as AuthenticatedProjectsIndexRouteImport } from './routes/_authenticated.projects.index'
+import { Route as AuthenticatedProjectsProjectIdRouteImport } from './routes/_authenticated.projects.$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedActivityRoute = AuthenticatedActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedBoardRoute = AuthenticatedBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedEmployeesRoute = AuthenticatedEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedFilesRoute = AuthenticatedFilesRouteImport.update({
+  id: '/files',
+  path: '/files',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedOrganizationsRoute =
+  AuthenticatedOrganizationsRouteImport.update({
+    id: '/organizations',
+    path: '/organizations',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSearchRoute = AuthenticatedSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSprintsRoute = AuthenticatedSprintsRouteImport.update({
+  id: '/sprints',
+  path: '/sprints',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedTasksRoute = AuthenticatedTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedTimesheetRoute = AuthenticatedTimesheetRouteImport.update({
+  id: '/timesheet',
+  path: '/timesheet',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedProjectsIndexRoute =
+  AuthenticatedProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedProjectsProjectIdRoute =
+  AuthenticatedProjectsProjectIdRouteImport.update({
+    id: '/projects/$projectId',
+    path: '/projects/$projectId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof AuthenticatedActivityRoute
+  '/board': typeof AuthenticatedBoardRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/employees': typeof AuthenticatedEmployeesRoute
+  '/files': typeof AuthenticatedFilesRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/organizations': typeof AuthenticatedOrganizationsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/search': typeof AuthenticatedSearchRoute
+  '/sprints': typeof AuthenticatedSprintsRoute
+  '/tasks': typeof AuthenticatedTasksRoute
+  '/timesheet': typeof AuthenticatedTimesheetRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof AuthenticatedActivityRoute
+  '/board': typeof AuthenticatedBoardRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/employees': typeof AuthenticatedEmployeesRoute
+  '/files': typeof AuthenticatedFilesRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/organizations': typeof AuthenticatedOrganizationsRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/search': typeof AuthenticatedSearchRoute
+  '/sprints': typeof AuthenticatedSprintsRoute
+  '/tasks': typeof AuthenticatedTasksRoute
+  '/timesheet': typeof AuthenticatedTimesheetRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_authenticated/activity': typeof AuthenticatedActivityRoute
+  '/_authenticated/board': typeof AuthenticatedBoardRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
+  '/_authenticated/files': typeof AuthenticatedFilesRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/organizations': typeof AuthenticatedOrganizationsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/search': typeof AuthenticatedSearchRoute
+  '/_authenticated/sprints': typeof AuthenticatedSprintsRoute
+  '/_authenticated/tasks': typeof AuthenticatedTasksRoute
+  '/_authenticated/timesheet': typeof AuthenticatedTimesheetRoute
+  '/_authenticated/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/_authenticated/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/board'
+    | '/dashboard'
+    | '/employees'
+    | '/files'
+    | '/notifications'
+    | '/organizations'
+    | '/profile'
+    | '/reports'
+    | '/search'
+    | '/sprints'
+    | '/tasks'
+    | '/timesheet'
+    | '/projects/$projectId'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/activity'
+    | '/board'
+    | '/dashboard'
+    | '/employees'
+    | '/files'
+    | '/notifications'
+    | '/organizations'
+    | '/profile'
+    | '/reports'
+    | '/search'
+    | '/sprints'
+    | '/tasks'
+    | '/timesheet'
+    | '/projects/$projectId'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/_authenticated/activity'
+    | '/_authenticated/board'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/employees'
+    | '/_authenticated/files'
+    | '/_authenticated/notifications'
+    | '/_authenticated/organizations'
+    | '/_authenticated/profile'
+    | '/_authenticated/reports'
+    | '/_authenticated/search'
+    | '/_authenticated/sprints'
+    | '/_authenticated/tasks'
+    | '/_authenticated/timesheet'
+    | '/_authenticated/projects/$projectId'
+    | '/_authenticated/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +244,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/activity': {
+      id: '/_authenticated/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof AuthenticatedActivityRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/board': {
+      id: '/_authenticated/board'
+      path: '/board'
+      fullPath: '/board'
+      preLoaderRoute: typeof AuthenticatedBoardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/employees': {
+      id: '/_authenticated/employees'
+      path: '/employees'
+      fullPath: '/employees'
+      preLoaderRoute: typeof AuthenticatedEmployeesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/files': {
+      id: '/_authenticated/files'
+      path: '/files'
+      fullPath: '/files'
+      preLoaderRoute: typeof AuthenticatedFilesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/organizations': {
+      id: '/_authenticated/organizations'
+      path: '/organizations'
+      fullPath: '/organizations'
+      preLoaderRoute: typeof AuthenticatedOrganizationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/search': {
+      id: '/_authenticated/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof AuthenticatedSearchRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/sprints': {
+      id: '/_authenticated/sprints'
+      path: '/sprints'
+      fullPath: '/sprints'
+      preLoaderRoute: typeof AuthenticatedSprintsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/tasks': {
+      id: '/_authenticated/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof AuthenticatedTasksRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/timesheet': {
+      id: '/_authenticated/timesheet'
+      path: '/timesheet'
+      fullPath: '/timesheet'
+      preLoaderRoute: typeof AuthenticatedTimesheetRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/projects/': {
+      id: '/_authenticated/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof AuthenticatedProjectsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/projects/$projectId': {
+      id: '/_authenticated/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof AuthenticatedProjectsProjectIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedActivityRoute: typeof AuthenticatedActivityRoute
+  AuthenticatedBoardRoute: typeof AuthenticatedBoardRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
+  AuthenticatedFilesRoute: typeof AuthenticatedFilesRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedOrganizationsRoute: typeof AuthenticatedOrganizationsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedSearchRoute: typeof AuthenticatedSearchRoute
+  AuthenticatedSprintsRoute: typeof AuthenticatedSprintsRoute
+  AuthenticatedTasksRoute: typeof AuthenticatedTasksRoute
+  AuthenticatedTimesheetRoute: typeof AuthenticatedTimesheetRoute
+  AuthenticatedProjectsProjectIdRoute: typeof AuthenticatedProjectsProjectIdRoute
+  AuthenticatedProjectsIndexRoute: typeof AuthenticatedProjectsIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedActivityRoute: AuthenticatedActivityRoute,
+  AuthenticatedBoardRoute: AuthenticatedBoardRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
+  AuthenticatedFilesRoute: AuthenticatedFilesRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedOrganizationsRoute: AuthenticatedOrganizationsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedSearchRoute: AuthenticatedSearchRoute,
+  AuthenticatedSprintsRoute: AuthenticatedSprintsRoute,
+  AuthenticatedTasksRoute: AuthenticatedTasksRoute,
+  AuthenticatedTimesheetRoute: AuthenticatedTimesheetRoute,
+  AuthenticatedProjectsProjectIdRoute: AuthenticatedProjectsProjectIdRoute,
+  AuthenticatedProjectsIndexRoute: AuthenticatedProjectsIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
