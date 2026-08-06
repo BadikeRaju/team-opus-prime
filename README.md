@@ -1,482 +1,501 @@
-# Project Orbit
+# Enterprise Project Management System
 
-Enterprise Project Management System (EPMS)
+> A full-stack enterprise project management platform built with Django, Django REST Framework, React.js, MySQL, Redis, and Celery to streamline project planning, task management, sprint tracking, and team collaboration.
 
-Tech Stack
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Django](https://img.shields.io/badge/Django-5.x-success)
+![React](https://img.shields.io/badge/React-19-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Frontend
+---
 
- React.js
+# Overview
 
- Redux Toolkit
+Enterprise Project Management System (EPMS) is a scalable project management platform designed to help organizations manage projects, teams, and workflows efficiently. It provides project planning, sprint management, Kanban boards, task assignment, progress tracking, analytics dashboards, and role-based access control through an intuitive web interface.
 
- React Router
+The application follows a modern full-stack architecture using Django REST Framework for backend APIs and React.js for an interactive frontend.
 
- Axios
+---
 
- Tailwind CSS
+# Features
 
- Chart.js
+## Project Management
 
-Backend
+- Create and manage multiple projects
+- Archive completed projects
+- Project overview dashboard
+- Project progress tracking
 
- Python
+---
 
- Django
+## Sprint Management
 
- Django REST Framework
+- Create sprints
+- Sprint planning
+- Sprint backlog
+- Sprint status tracking
 
- Django Simple JWT
+---
 
- Django Channels (Real-time notifications)
+## Task Management
 
- Celery (Background Tasks)
+- Create tasks
+- Assign tasks
+- Set priorities
+- Due dates
+- Labels
+- Task comments
+- Task attachments
+- Activity history
 
- Redis (Celery Broker)
+---
 
-Database
+## Kanban Board
 
- MySQL
+- Drag-and-drop task management
+- To Do
+- In Progress
+- Review
+- Testing
+- Completed
 
-Development Tools
+---
 
- Git
+## Team Collaboration
 
- GitHub
+- Team management
+- Project members
+- Workspace collaboration
+- Task discussions
+- Activity timeline
 
- Docker
+---
 
- Postman
+## Role-Based Access Control
 
- VS Code
+Supported roles
 
-Project Overview
+- Admin
+- Project Manager
+- Team Lead
+- Developer
+- Tester
 
-Enterprise Project Management System (EPMS) is a full-stack web application that helps organizations manage software projects, teams, tasks, sprint planning, employee collaboration, document sharing, and project analytics through a secure role-based system.
+---
 
-The platform supports multiple organizations, allowing administrators to create projects, assign employees, track project progress, monitor productivity, and generate reports through an intuitive dashboard.
+## Dashboard & Analytics
 
-User Roles
+- Project completion statistics
+- Sprint progress
+- Team productivity
+- Task distribution
+- Workload visualization
 
-Super Admin
+---
 
- Manage organizations
+## Notifications
 
- View system analytics
+- Task assigned
+- Status updated
+- Deadline reminders
+- Sprint notifications
 
- Manage users
+---
 
-Organization Admin
+# Tech Stack
 
- Create projects
+## Frontend
 
- Invite employees
+- React.js
+- React Router
+- Redux Toolkit
+- Tailwind CSS
+- Chart.js
+- Axios
 
- Assign managers
+---
 
- Manage departments
+## Backend
 
- Configure permissions
+- Python
+- Django
+- Django REST Framework
+- JWT Authentication
 
-Project Manager
+---
 
- Create tasks
+## Database
 
- Create sprints
+- MySQL
 
- Assign developers
+---
 
- Monitor progress
+## Background Processing
 
- Review completed work
+- Redis
+- Celery
 
-Developer
+---
 
- View assigned tasks
+## Tools
 
- Update task status
+- Docker
+- Git
+- GitHub
+- Postman
 
- Upload files
+---
 
- Track working hours
+# System Architecture
 
- Add comments
-
-Viewer
-
- Read-only access
-
-Major Modules
-
-1. Authentication
-
- Registration
-
- Login
-
- JWT Authentication
-
- Forgot Password
-
- Reset Password
-
- Change Password
-
- Profile Management
-
-2. Organization Management
-
- Organizations
-
- Departments
-
- Teams
-
- Employee Directory
-
-3. Project Management
-
-Each project includes:
-
- Name
-
- Description
-
- Start Date
-
- End Date
-
- Priority
-
- Status
-
- Team Members
-
- Project Manager
-
-4. Task Management
-
-Each task includes:
-
- Title
-
- Description
-
- Priority
-
- Due Date
-
- Assigned Employee
-
- Labels
-
- Status
-
- Estimated Hours
-
- Actual Hours
-
-Task workflow:
-
-Backlog
-   ↓
-To Do
-   ↓
-In Progress
-   ↓
-Testing
-   ↓
-Completed
-
-5. Kanban Board
-
- Drag-and-drop task movement
-
- Live task updates
-
- Progress tracking
-
-6. Sprint Management
-
- Sprint creation
-
- Sprint goals
-
- Sprint duration
-
- Sprint completion percentage
-
-7. Time Tracking
-
- Start timer
-
- Pause timer
-
- Stop timer
-
- Daily work logs
-
-8. File Management
-
- Upload project documents
-
- Download files
-
- Attach files to tasks
-
-9. Comments
-
- Comment on tasks
-
- Reply to comments
-
- Mention team members
-
-10. Notifications
-
-Using Django Channels:
-
- Task assigned
-
- Task completed
-
- Comment added
-
- Sprint started
-
- Deadline reminder
-
-11. Dashboard
-
-Admin Dashboard
-
- Total Projects
-
- Active Employees
-
- Pending Tasks
-
- Completed Tasks
-
-Manager Dashboard
-
- Sprint Progress
-
- Team Workload
-
- Upcoming Deadlines
-
-Developer Dashboard
-
- Assigned Tasks
-
- Completed Tasks
-
- Today's Work
-
- Pending Reviews
-
-12. Reports
-
-Generate:
-
- Employee Report
-
- Project Report
-
- Sprint Report
-
- Productivity Report
-
-13. Search
-
-Search by:
-
- Project
-
- Employee
-
- Task
-
- Department
-
-14. Activity Log
-
-Record events such as:
-
- Project created
-
- Task assigned
-
- Status updated
-
- File uploaded
-
-Database (MySQL)
-
-Main Tables:
-
- Users
-
- Roles
-
- Organizations
-
- Departments
-
- Employees
-
- Projects
-
- ProjectMembers
-
- Sprints
-
- Tasks
-
- Comments
-
- Attachments
-
- Notifications
-
- TimeLogs
-
- ActivityLogs
-
-REST APIs
-
-Authentication
-
-POST /register
-POST /login
-POST /logout
-POST /refresh-token
-
-Projects
-
-GET /projects
-POST /projects
-PUT /projects/{id}
-DELETE /projects/{id}
-
-Tasks
-
-GET /tasks
-POST /tasks
-PUT /tasks/{id}
-DELETE /tasks/{id}
-PATCH /tasks/{id}/status
-
-Employees
-
-GET /employees
-POST /employees
-PUT /employees/{id}
-DELETE /employees/{id}
-
-Comments
-
-POST /tasks/{id}/comments
-GET /tasks/{id}/comments
-
-Advanced Features
-
- JWT Authentication
-
- Role-Based Access Control (RBAC)
-
- Custom Django Permissions
-
- Pagination
-
- Search
-
- Filtering
-
- Sorting
-
- Soft Delete
-
- File Uploads
-
- Docker
-
- API Documentation (Swagger/OpenAPI)
-
- Unit Testing
-
- Responsive UI
-
-Folder Structure
-
-EPMS/
-│
-├── backend/
-│   ├── accounts/
-│   ├── organizations/
-│   ├── employees/
-│   ├── projects/
-│   ├── tasks/
-│   ├── sprints/
-│   ├── notifications/
-│   ├── reports/
-│   ├── common/
-│   ├── config/
-│   └── manage.py
-│
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── redux/
-│   ├── services/
-│   ├── hooks/
-│   └── utils/
-│
-└── docker-compose.yml
-
-Why this project is strong
-
-This project demonstrates:
-
- Django & Django REST Framework
-
- React integration
-
- JWT authentication
-
- Role-based authorization
-
- MySQL database design
-
- REST API development
-
- Real-time features with Django Channels
-
- Background task processing with Celery
-
- Docker-based development
-
- Clean, modular project architecture.   Create this website
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5c65eed7-0064-425f-a853-f045601cb4f6).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
 ```
+                 React.js
+                     │
+               REST API
+                     │
+      Django REST Framework
+                     │
+    -----------------------------
+    │            │             │
+Authentication  Projects      Tasks
+    │            │             │
+    │         Sprint       Dashboard
+    │            │             │
+    -----------------------------
+             MySQL Database
+                    │
+           Redis + Celery
+      (Background Notifications)
+```
+
+---
+
+# Modules
+
+## User Management
+
+- User registration
+- Login
+- Profile management
+- Role management
+
+---
+
+## Project Module
+
+- Create project
+- Edit project
+- Delete project
+- Archive project
+- Team assignment
+
+---
+
+## Sprint Module
+
+- Sprint planning
+- Sprint backlog
+- Sprint completion
+- Sprint analytics
+
+---
+
+## Task Module
+
+- Task creation
+- Task assignment
+- Priority management
+- Status updates
+- Comments
+- Attachments
+
+---
+
+## Dashboard Module
+
+- Active projects
+- Sprint progress
+- Productivity charts
+- Team workload
+
+---
+
+## Notification Module
+
+- Task reminders
+- Status updates
+- Deadline alerts
+- Activity notifications
+
+---
+
+# REST APIs
+
+## Authentication
+
+```http
+POST   /api/auth/register
+POST   /api/auth/login
+POST   /api/auth/refresh
+GET    /api/auth/profile
+```
+
+---
+
+## Projects
+
+```http
+GET    /api/projects
+POST   /api/projects
+PUT    /api/projects/{id}
+DELETE /api/projects/{id}
+```
+
+---
+
+## Sprints
+
+```http
+GET    /api/sprints
+POST   /api/sprints
+PUT    /api/sprints/{id}
+DELETE /api/sprints/{id}
+```
+
+---
+
+## Tasks
+
+```http
+GET    /api/tasks
+POST   /api/tasks
+PUT    /api/tasks/{id}
+DELETE /api/tasks/{id}
+```
+
+---
+
+## Dashboard
+
+```http
+GET /api/dashboard
+```
+
+---
+
+# Database Design
+
+## User
+
+- id
+- username
+- email
+- password
+- role
+
+---
+
+## Project
+
+- id
+- name
+- description
+- owner
+- status
+- created_at
+
+---
+
+## Sprint
+
+- id
+- project
+- start_date
+- end_date
+- status
+
+---
+
+## Task
+
+- id
+- project
+- sprint
+- assignee
+- priority
+- status
+- due_date
+
+---
+
+## Activity
+
+- id
+- user
+- task
+- action
+- timestamp
+
+---
+
+## Notification
+
+- id
+- user
+- message
+- status
+
+---
+
+# Security Features
+
+- JWT Authentication
+- Password Hashing
+- Protected REST APIs
+- Role-Based Access Control
+- Input Validation
+- Secure File Upload
+
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/enterprise-project-management-system.git
+
+cd enterprise-project-management-system
+```
+
+---
+
+## Backend
+
+Create virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+Linux/macOS
+
+```bash
+source venv/bin/activate
+```
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run migrations
+
+```bash
+python manage.py migrate
+```
+
+Start server
+
+```bash
+python manage.py runserver
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm start
+```
+
+---
+
+## Redis
+
+```bash
+docker run -d -p 6379:6379 redis
+```
+
+---
+
+## Celery Worker
+
+```bash
+celery -A config worker --loglevel=info
+```
+
+---
+
+# Future Enhancements
+
+- Gantt Charts
+- Calendar View
+- Email Notifications
+- Project Templates
+- Time Reports
+- Budget Tracking
+- Resource Allocation
+- File Versioning
+- AI Task Prioritization
+- AI Sprint Planning
+- Team Performance Analytics
+
+---
+
+# Skills Demonstrated
+
+- Python
+- Django
+- Django REST Framework
+- React.js
+- REST APIs
+- JWT Authentication
+- MySQL
+- Redis
+- Celery
+- Docker
+- Redux Toolkit
+- Chart.js
+- Project Management Systems
+- Role-Based Access Control
+- Dashboard Development
+- Backend Development
+- Full Stack Development
+
+---
+
+# Use Cases
+
+- Software Development Teams
+- Agile Project Management
+- Startup Project Tracking
+- Enterprise Workflow Management
+- Scrum Teams
+- Product Development
+- Team Collaboration
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+---
+
+# Author
+
+**Raju Badike**
