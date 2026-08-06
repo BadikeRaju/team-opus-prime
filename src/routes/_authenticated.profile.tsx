@@ -89,8 +89,14 @@ function ProfilePage() {
             <Button
               variant="outline"
               onClick={() => {
-                if (pw.next.length < 8) return toast.error("New password is too short.");
-                if (pw.next !== pw.confirm) return toast.error("Passwords do not match.");
+                if (pw.next.length < 8) {
+                  toast.error("New password is too short.");
+                  return;
+                }
+                if (pw.next !== pw.confirm) {
+                  toast.error("Passwords do not match.");
+                  return;
+                }
                 setPw({ current: "", next: "", confirm: "" });
                 toast.success("Password changed");
               }}
