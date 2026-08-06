@@ -1,0 +1,69 @@
+databases:
+  - name: opus-prime-db
+    databaseName: opus_prime
+    user: opus_user
+    plan: free
+
+services:
+  - type: redis
+    name: opus-prime-redis
+    ipAllowList: [] # allow all
+    plan: free
+
+  - type: web
+    name: opus-prime-backend
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn core_project.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: opus-prime-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: opus-prime-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      # This allows Render to set CORS for the frontend origin
+      - key: RENDER_EXTERNAL_HOSTNAME
+        value: opus-prime-frontend.onrender.com # Change this once frontend is deployed
+    rootDir: backend
+
+  - type: worker
+    name: opus-prime-celery
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "celery -A core_project worker -l INFO"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: opus-prime-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: opus-prime-redis
+          property: connectionString
+    rootDir: backend
+
+  - type: web
+    name: opus-prime-frontend
+    env: static
+    buildCommand: "bun install && bun run build"
+    staticPublishPath: "./dist"
+    envVars:
+      # Inject the backend API URL into the React frontend at build time
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: opus-prime-backend
+          envVarKey: RENDER_EXTERNAL_URL
