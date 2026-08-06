@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as AuthenticatedActivityRouteImport } from './routes/_authenticated.activity'
 import { Route as AuthenticatedBoardRouteImport } from './routes/_authenticated.board'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated.dashboard'
+import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated.employees'
 import { Route as AuthenticatedFilesRouteImport } from './routes/_authenticated.files'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated.notifications'
+import { Route as AuthenticatedOrganizationsRouteImport } from './routes/_authenticated.organizations'
 import { Route as AuthenticatedSprintsRouteImport } from './routes/_authenticated.sprints'
 import { Route as AuthenticatedTasksRouteImport } from './routes/_authenticated.tasks'
 import { Route as AuthenticatedTimesheetRouteImport } from './routes/_authenticated.timesheet'
@@ -29,6 +33,11 @@ const AuthenticatedRoute = AuthenticatedRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedActivityRoute = AuthenticatedActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedBoardRoute = AuthenticatedBoardRouteImport.update({
   id: '/board',
   path: '/board',
@@ -39,11 +48,28 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedEmployeesRoute = AuthenticatedEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedFilesRoute = AuthenticatedFilesRouteImport.update({
   id: '/files',
   path: '/files',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedOrganizationsRoute =
+  AuthenticatedOrganizationsRouteImport.update({
+    id: '/organizations',
+    path: '/organizations',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedSprintsRoute = AuthenticatedSprintsRouteImport.update({
   id: '/sprints',
   path: '/sprints',
@@ -74,9 +100,13 @@ const AuthenticatedProjectsProjectIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof AuthenticatedActivityRoute
   '/board': typeof AuthenticatedBoardRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/employees': typeof AuthenticatedEmployeesRoute
   '/files': typeof AuthenticatedFilesRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/organizations': typeof AuthenticatedOrganizationsRoute
   '/sprints': typeof AuthenticatedSprintsRoute
   '/tasks': typeof AuthenticatedTasksRoute
   '/timesheet': typeof AuthenticatedTimesheetRoute
@@ -85,9 +115,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof AuthenticatedActivityRoute
   '/board': typeof AuthenticatedBoardRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/employees': typeof AuthenticatedEmployeesRoute
   '/files': typeof AuthenticatedFilesRoute
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/organizations': typeof AuthenticatedOrganizationsRoute
   '/sprints': typeof AuthenticatedSprintsRoute
   '/tasks': typeof AuthenticatedTasksRoute
   '/timesheet': typeof AuthenticatedTimesheetRoute
@@ -98,9 +132,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_authenticated/activity': typeof AuthenticatedActivityRoute
   '/_authenticated/board': typeof AuthenticatedBoardRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
   '/_authenticated/files': typeof AuthenticatedFilesRoute
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/organizations': typeof AuthenticatedOrganizationsRoute
   '/_authenticated/sprints': typeof AuthenticatedSprintsRoute
   '/_authenticated/tasks': typeof AuthenticatedTasksRoute
   '/_authenticated/timesheet': typeof AuthenticatedTimesheetRoute
@@ -111,9 +149,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/activity'
     | '/board'
     | '/dashboard'
+    | '/employees'
     | '/files'
+    | '/notifications'
+    | '/organizations'
     | '/sprints'
     | '/tasks'
     | '/timesheet'
@@ -122,9 +164,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/activity'
     | '/board'
     | '/dashboard'
+    | '/employees'
     | '/files'
+    | '/notifications'
+    | '/organizations'
     | '/sprints'
     | '/tasks'
     | '/timesheet'
@@ -134,9 +180,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/_authenticated/activity'
     | '/_authenticated/board'
     | '/_authenticated/dashboard'
+    | '/_authenticated/employees'
     | '/_authenticated/files'
+    | '/_authenticated/notifications'
+    | '/_authenticated/organizations'
     | '/_authenticated/sprints'
     | '/_authenticated/tasks'
     | '/_authenticated/timesheet'
@@ -165,6 +215,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/activity': {
+      id: '/_authenticated/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof AuthenticatedActivityRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/board': {
       id: '/_authenticated/board'
       path: '/board'
@@ -179,11 +236,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/employees': {
+      id: '/_authenticated/employees'
+      path: '/employees'
+      fullPath: '/employees'
+      preLoaderRoute: typeof AuthenticatedEmployeesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/files': {
       id: '/_authenticated/files'
       path: '/files'
       fullPath: '/files'
       preLoaderRoute: typeof AuthenticatedFilesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/organizations': {
+      id: '/_authenticated/organizations'
+      path: '/organizations'
+      fullPath: '/organizations'
+      preLoaderRoute: typeof AuthenticatedOrganizationsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/sprints': {
@@ -225,9 +303,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedActivityRoute: typeof AuthenticatedActivityRoute
   AuthenticatedBoardRoute: typeof AuthenticatedBoardRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
   AuthenticatedFilesRoute: typeof AuthenticatedFilesRoute
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedOrganizationsRoute: typeof AuthenticatedOrganizationsRoute
   AuthenticatedSprintsRoute: typeof AuthenticatedSprintsRoute
   AuthenticatedTasksRoute: typeof AuthenticatedTasksRoute
   AuthenticatedTimesheetRoute: typeof AuthenticatedTimesheetRoute
@@ -236,9 +318,13 @@ interface AuthenticatedRouteChildren {
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedActivityRoute: AuthenticatedActivityRoute,
   AuthenticatedBoardRoute: AuthenticatedBoardRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
   AuthenticatedFilesRoute: AuthenticatedFilesRoute,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedOrganizationsRoute: AuthenticatedOrganizationsRoute,
   AuthenticatedSprintsRoute: AuthenticatedSprintsRoute,
   AuthenticatedTasksRoute: AuthenticatedTasksRoute,
   AuthenticatedTimesheetRoute: AuthenticatedTimesheetRoute,
