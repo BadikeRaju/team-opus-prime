@@ -170,8 +170,14 @@ SIMPLE_JWT = {
 }
 
 # Celery Configuration
-CELERY_BROKER_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
-CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+CELERY_BROKER_URL = os.environ.get("REDIS_URL")
+if CELERY_BROKER_URL:
+    CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+    CELERY_TASK_ALWAYS_EAGER = False
+else:
+    # Fallback to synchronous execution if no Redis is provided (great for free hosting)
+    CELERY_TASK_ALWAYS_EAGER = True
+    CELERY_TASK_STORE_EAGER_RESULT = True
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
