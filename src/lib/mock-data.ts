@@ -92,7 +92,7 @@ export const tasks: Task[] = seedTasks.map((t, i) => {
     status: t.status,
     dueDate: day(-4 + i * 2),
     assigneeId: t.assigneeId ?? null,
-    labels: t.labels ?? [labelPool[i % labelPool.length]],
+    labels: t.labels ?? [labelPool[i % labelPool.length]!],
     estimatedHours: t.estimatedHours ?? 8,
     actualHours: t.actualHours ?? 0,
     projectId: t.projectId,
