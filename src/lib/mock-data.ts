@@ -18,29 +18,29 @@ const day = (offset: number) => {
 };
 
 export const organizations: Organization[] = [
-  { id: "org-1", name: "Northwind Technologies", domain: "northwind.io", plan: "Enterprise", employees: 148, projects: 12, createdAt: "2023-04-11" },
+  { id: "org-1", name: "Raju Technologies", domain: "rajutech.in", plan: "Enterprise", employees: 148, projects: 12, createdAt: "2023-04-11" },
   { id: "org-2", name: "Helios Analytics", domain: "helios.dev", plan: "Business", employees: 64, projects: 7, createdAt: "2024-01-22" },
   { id: "org-3", name: "Verdant Logistics", domain: "verdant.co", plan: "Business", employees: 39, projects: 4, createdAt: "2024-09-03" },
 ];
 
 export const departments: Department[] = [
   { id: "dep-1", name: "Platform Engineering", orgId: "org-1", lead: "Anika Rao", headcount: 24 },
-  { id: "dep-2", name: "Product Design", orgId: "org-1", lead: "Marco Silva", headcount: 9 },
+  { id: "dep-2", name: "Product Design", orgId: "org-1", lead: "Manoj Singh", headcount: 9 },
   { id: "dep-3", name: "Quality Assurance", orgId: "org-1", lead: "Priya Nair", headcount: 11 },
-  { id: "dep-4", name: "Data Science", orgId: "org-1", lead: "Ethan Cole", headcount: 7 },
+  { id: "dep-4", name: "Data Science", orgId: "org-1", lead: "Vikram Reddy", headcount: 7 },
 ];
 
 export const employees: Employee[] = [
-  { id: "emp-1", name: "Dana Whitfield", email: "dana@northwind.io", role: "super_admin", department: "Platform Engineering", title: "VP Engineering", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-2", name: "Anika Rao", email: "anika@northwind.io", role: "org_admin", department: "Platform Engineering", title: "Engineering Director", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-3", name: "Samuel Okoye", email: "samuel@northwind.io", role: "manager", department: "Platform Engineering", title: "Project Manager", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-4", name: "Priya Nair", email: "priya@northwind.io", role: "manager", department: "Quality Assurance", title: "QA Lead", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-5", name: "Liam Chen", email: "liam@northwind.io", role: "developer", department: "Platform Engineering", title: "Senior Backend Engineer", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-6", name: "Sofia Ibarra", email: "sofia@northwind.io", role: "developer", department: "Platform Engineering", title: "Frontend Engineer", orgId: "org-1", status: "active", capacityHours: 36 },
-  { id: "emp-7", name: "Marco Silva", email: "marco@northwind.io", role: "developer", department: "Product Design", title: "Product Designer", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-8", name: "Ethan Cole", email: "ethan@northwind.io", role: "developer", department: "Data Science", title: "Data Engineer", orgId: "org-1", status: "active", capacityHours: 40 },
-  { id: "emp-9", name: "Hana Kobayashi", email: "hana@northwind.io", role: "developer", department: "Quality Assurance", title: "QA Engineer", orgId: "org-1", status: "invited", capacityHours: 32 },
-  { id: "emp-10", name: "Robert Fields", email: "robert@northwind.io", role: "viewer", department: "Platform Engineering", title: "Stakeholder", orgId: "org-1", status: "active", capacityHours: 0 },
+  { id: "emp-1", name: "Divya Sharma", email: "divya@rajutech.in", role: "super_admin", department: "Platform Engineering", title: "VP Engineering", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-2", name: "Anika Rao", email: "anika@rajutech.in", role: "org_admin", department: "Platform Engineering", title: "Engineering Director", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-3", name: "Sanjay Kumar", email: "sanjay@rajutech.in", role: "manager", department: "Platform Engineering", title: "Project Manager", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-4", name: "Priya Nair", email: "priya@rajutech.in", role: "manager", department: "Quality Assurance", title: "QA Lead", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-5", name: "Rahul Gupta", email: "rahul@rajutech.in", role: "developer", department: "Platform Engineering", title: "Senior Backend Engineer", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-6", name: "Sneha Patil", email: "sneha@rajutech.in", role: "developer", department: "Platform Engineering", title: "Frontend Engineer", orgId: "org-1", status: "active", capacityHours: 36 },
+  { id: "emp-7", name: "Manoj Singh", email: "manoj@rajutech.in", role: "developer", department: "Product Design", title: "Product Designer", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-8", name: "Vikram Reddy", email: "vikram@rajutech.in", role: "developer", department: "Data Science", title: "Data Engineer", orgId: "org-1", status: "active", capacityHours: 40 },
+  { id: "emp-9", name: "Hema Desai", email: "hema@rajutech.in", role: "developer", department: "Quality Assurance", title: "QA Engineer", orgId: "org-1", status: "invited", capacityHours: 32 },
+  { id: "emp-10", name: "Rohan Verma", email: "rohan@rajutech.in", role: "viewer", department: "Platform Engineering", title: "Stakeholder", orgId: "org-1", status: "active", capacityHours: 0 },
 ];
 
 export const projects: Project[] = [
@@ -102,7 +102,7 @@ export const tasks: Task[] = seedTasks.map((t, i) => {
 });
 
 export const comments: Comment[] = [
-  { id: "cmt-1", taskId: "tsk-1", authorId: "emp-3", body: "@Liam Chen please confirm the ingestion contract matches the billing spec v3.", createdAt: day(-2) },
+  { id: "cmt-1", taskId: "tsk-1", authorId: "emp-3", body: "@Rahul Gupta please confirm the ingestion contract matches the billing spec v3.", createdAt: day(-2) },
   { id: "cmt-2", taskId: "tsk-1", authorId: "emp-5", body: "Confirmed. Batch size capped at 500 events per request.", createdAt: day(-1), parentId: "cmt-1" },
   { id: "cmt-3", taskId: "tsk-2", authorId: "emp-9", body: "Found a rounding mismatch on refunds — reopening for one more pass.", createdAt: day(-1) },
   { id: "cmt-4", taskId: "tsk-8", authorId: "emp-4", body: "Security review scheduled Thursday, keep the staging tenant untouched.", createdAt: day(0) },
@@ -127,11 +127,11 @@ export const timeLogs: TimeLog[] = [
 
 export const activityLogs: ActivityLog[] = [
   { id: "act-1", actorId: "emp-3", action: "created project", target: "Sentinel Access Control", createdAt: day(-14), type: "project" },
-  { id: "act-2", actorId: "emp-3", action: "assigned task", target: "APX-100 to Liam Chen", createdAt: day(-9), type: "task" },
+  { id: "act-2", actorId: "emp-3", action: "assigned task", target: "APX-100 to Rahul Gupta", createdAt: day(-9), type: "task" },
   { id: "act-3", actorId: "emp-5", action: "updated status", target: "APX-104 → Completed", createdAt: day(-6), type: "task" },
   { id: "act-4", actorId: "emp-6", action: "uploaded file", target: "sso-integration-notes.docx", createdAt: day(-3), type: "file" },
   { id: "act-5", actorId: "emp-4", action: "started sprint", target: "ATL Sprint 6", createdAt: day(-6), type: "sprint" },
-  { id: "act-6", actorId: "emp-2", action: "invited employee", target: "Hana Kobayashi", createdAt: day(-2), type: "member" },
+  { id: "act-6", actorId: "emp-2", action: "invited employee", target: "Hema Desai", createdAt: day(-2), type: "member" },
   { id: "act-7", actorId: "emp-8", action: "updated status", target: "ATL-110 → Testing", createdAt: day(-1), type: "task" },
 ];
 
@@ -140,5 +140,5 @@ export const notifications: Notification[] = [
   { id: "ntf-2", title: "Comment added", body: "Priya Nair commented on APX-101.", createdAt: day(0), read: false, type: "comment" },
   { id: "ntf-3", title: "Sprint started", body: "ATL Sprint 6 is now active until " + day(8) + ".", createdAt: day(-6), read: true, type: "sprint" },
   { id: "ntf-4", title: "Deadline reminder", body: "APX-100 is due in 2 days.", createdAt: day(-1), read: false, type: "deadline" },
-  { id: "ntf-5", title: "Task completed", body: "Liam Chen completed APX-104.", createdAt: day(-6), read: true, type: "task_completed" },
+  { id: "ntf-5", title: "Task completed", body: "Rahul Gupta completed APX-104.", createdAt: day(-6), read: true, type: "task_completed" },
 ];

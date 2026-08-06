@@ -47,7 +47,7 @@ function EmployeesPage() {
             <Button
               size="sm"
               onClick={() => {
-                dispatch(dataActions.inviteEmployee({ name: "New Teammate", email: `invite${employees.length + 1}@northwind.io`, role: "developer", department: departments[0]?.name ?? "Platform Engineering", title: "Engineer", orgId: "org-1", status: "invited", capacityHours: 40 }));
+                dispatch(dataActions.inviteEmployee({ name: "New Teammate", email: `invite${employees.length + 1}@rajutech.in`, role: "developer", department: departments[0]?.name ?? "Platform Engineering", title: "Engineer", orgId: "org-1", status: "invited", capacityHours: 40 }));
                 toast.success("Invitation sent");
               }}
             >

@@ -36,7 +36,7 @@ function AuthPage() {
   const navigate = useNavigate();
   const employees = useAppSelector((s) => s.data.employees);
   const user = useAppSelector((s) => s.auth.user);
-  const [email, setEmail] = useState("samuel@northwind.io");
+  const [email, setEmail] = useState("sanjay@rajutech.in");
   const [password, setPassword] = useState("epms-demo");
   const [pending, setPending] = useState(false);
   const [mode, setMode] = useState("login");
@@ -159,11 +159,11 @@ function AuthPage() {
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="reg-name">Full name</Label>
-                <Input id="reg-name" placeholder="Jordan Ellis" />
+                <Input id="reg-name" placeholder="Arjun Kumar" />
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="reg-org">Organization</Label>
-                <Input id="reg-org" placeholder="Northwind Technologies" />
+                <Input id="reg-org" placeholder="Raju Technologies" />
               </div>
               <div className="grid gap-1.5">
                 <Label htmlFor="reg-email">Work email</Label>
