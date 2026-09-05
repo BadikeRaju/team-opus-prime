@@ -17,6 +17,10 @@ The application follows a modern full-stack architecture using Django REST Frame
 
 ---
 
+### Full Application Demo & Workflow Walkthrough
+A complete video demonstration covering user authentication, project creation, sprint planning, Kanban board drag-and-drop actions, and real-time dashboard analytics.
+![App Demo Recording](./EpmsDemo.gif)
+
 # Features
 
 ## Project Management
